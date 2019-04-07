@@ -3,16 +3,11 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include "pnumber.h"
+#include "converter.h"
+#include "history.h"
 
-enum{
-    A = 10,
-    B = 11,
-    C = 12,
-    D = 13,
-    E = 14,
-    F = 15,
-    Dot = 16
-};
+
 
 namespace Ui {
 class MainWindow;
@@ -83,6 +78,12 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QPushButton* pbNum[16];
+    Converter conv;
+    History hist;
+    const int numButtons = 16;
+    const int cSmallA = 'a';
+    const int cSmallF = 'f';
+    const char token = ',';
 
 };
 

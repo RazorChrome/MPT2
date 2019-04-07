@@ -1,17 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>History</class>
- <widget name="History" class="QDialog">
+ <widget class="QDialog" name="History">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>426</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>280</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>401</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="columnCount">
+    <number>4</number>
+   </property>
+   <column>
+    <property name="text">
+     <string>NumberFrom</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>BaseFrom</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>NumberTo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>BaseTo</string>
+    </property>
+   </column>
+  </widget>
  </widget>
  <resources/>
  <connections/>

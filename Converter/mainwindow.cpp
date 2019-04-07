@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <history.h>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pbNum[13] = ui->pB_D;
     pbNum[14] = ui->pB_E;
     pbNum[15] = ui->pB_F;
+    //hist = new History();
 
 }
 
@@ -32,37 +34,37 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-int MainWindow::charToInt(char c) //переделать?
+int MainWindow::charToInt(char c)
 {
-    if((c >= 'a' && c <= 'f')){
-        return c - 'a' + A;
+    if((c >= cSmallA && c <= cSmallF)){
+        return c - cSmallA + A;
     }
-    else if(c >= 'A' && c <='F'){
-        return c - 'A' + A;
+    else if(c >= cA && c <= cF){
+        return c - cA + A;
     }
-    else if(c >= '0' && c <='9'){
-        return c - '0';
+    else if(c >= c0 && c <= c9){
+        return c - c0;
     }
-    else if(c == '.') return Dot;
+    else if(c == cDot) return Dot;
     else return -1;
 }
 
-void MainWindow::checkLineEditFrom() //переделать?
+void MainWindow::checkLineEditFrom()
 {
     QString txt = ui->lineEditFrom->text().toUpper();
     int i = 0, to = ui->spinBoxBase->value();
-    bool Dot = false;
+    bool dot = false;
     while (i < txt.size()){
         int num = charToInt(txt[i].toLatin1());
         if(num >= 0 && num < to){
             ++i;
         }
         else if(num == Dot){
-            if(Dot){
+            if(dot){
                 txt.remove(i, 1);
             }
             else{
-                Dot = true;
+                dot = true;
                 ++i;
             }
         }
@@ -75,32 +77,32 @@ void MainWindow::checkLineEditFrom() //переделать?
 
 void MainWindow::on_pB_1_clicked()
 {
-   ui->lineEditFrom->setText(ui->lineEditFrom->text()+"1");
+   ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c1);
 }
 
 void MainWindow::on_pB_2_clicked()
 {
-    ui->lineEditFrom->setText(ui->lineEditFrom->text()+"2");
+    ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c2);
 }
 
 void MainWindow::on_pB_3_clicked()
 {
-    ui->lineEditFrom->setText(ui->lineEditFrom->text()+"3");
+    ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c3);
 }
 
 void MainWindow::on_pB_4_clicked()
 {
-    ui->lineEditFrom->setText(ui->lineEditFrom->text()+"4");
+    ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c4);
 }
 
 void MainWindow::on_pB_5_clicked()
 {
-   ui->lineEditFrom->setText(ui->lineEditFrom->text()+"5");
+   ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c5);
 }
 
 void MainWindow::on_pB_6_clicked()
 {
-    ui->lineEditFrom->setText(ui->lineEditFrom->text()+"6");
+    ui->lineEditFrom->setText(ui->lineEditFrom->text()+ c6);
 }
 
 void MainWindow::on_pB_7_clicked()
@@ -174,7 +176,24 @@ void MainWindow::on_pB_CE_clicked()
 
 void MainWindow::on_pB_Exec_clicked()
 {
+    QString textFrom = ui->lineEditFrom->text();
+    if(textFrom.size() == textFrom.indexOf('.'))
+    {
+        textFrom.remove('.');
+        ui->lineEditFrom->setText(textFrom);
+    }
+    QString rec = "";
+    rec += textFrom;
+    rec += token + QString::number(ui->horizontalSliderFrom->value()) + token;
+    Pnumber from(ui->lineEditFrom->text().toStdString(),to_string(ui->horizontalSliderFrom->value()));
+    Pnumber to = conv.convert(from,ui->horizontalSliderRes->value());
+    string st = to.getAstring();
+    double stt = to.getA();
 
+    ui->lineEditRes->setText(QString::fromStdString(to.getAstring()));
+    rec += ui->lineEditRes->text();
+    rec += token+ QString::number(ui->horizontalSliderRes->value());
+    hist.addRecord(rec);
 }
 
 
@@ -188,7 +207,7 @@ void MainWindow::on_About_triggered()
 
 void MainWindow::on_spinBoxBase_valueChanged(int arg1)
 {
-    for(int i = 0; i < 16; ++i){
+    for(int i = 0; i < numButtons; ++i){
         pbNum[i]->setEnabled(i < arg1 ? true : false);
     }
     checkLineEditFrom();
@@ -204,6 +223,6 @@ void MainWindow::on_lineEditFrom_textEdited(const QString &arg1)
 
 void MainWindow::on_History_triggered()
 {
-    History *dialog = new History();
-    dialog->exec();
+    //History *dialog = new History();
+    hist.exec();
 }
