@@ -1,6 +1,8 @@
 #include "pnumber.h"
 #include <QDebug>
 
+using namespace std;
+
 Pnumber::Pnumber() {
     a = 0;
     b = 10;
@@ -159,7 +161,7 @@ void Pnumber::setB(int x) {
 }
 
 void Pnumber::setBstring(string str) {
-    stringstream ss{ str };
+    stringstream ss( str );
     int b_tmp;
     ss >> b_tmp;
     if (b_tmp >= 2 && b_tmp <= b16) b = b_tmp;
