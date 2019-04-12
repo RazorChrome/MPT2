@@ -6,30 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>426</width>
-    <height>320</height>
+    <width>440</width>
+    <height>315</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>315</height>
+   </size>
   </property>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>270</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Clear</string>
-   </property>
-  </widget>
+  <property name="maximumSize">
+   <size>
+    <width>440</width>
+    <height>315</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Последние действия</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../calculator-icon-png_131279.png</normaloff>../../../calculator-icon-png_131279.png</iconset>
+  </property>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
      <width>401</width>
      <height>241</height>
@@ -58,6 +61,19 @@
      <string>BaseTo</string>
     </property>
    </column>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>260</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
   </widget>
  </widget>
  <resources/>
