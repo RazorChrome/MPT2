@@ -176,7 +176,9 @@ void MainWindow::on_PlusMinuspushButton_clicked()
 
 void MainWindow::on_PluspushButton_clicked()
 {
-
+    if(!ui->Input->text().contains("+")){
+        ui->Input->setText(ui->Input->text()+"+");
+    }
 }
 
 
@@ -221,9 +223,7 @@ void MainWindow::on_CpushButton_clicked()
 
 void MainWindow::on_SqrtpushButton_clicked()
 {
-    if(!ui->Input->text().contains("÷")){
-        ui->Input->setText(ui->Input->text()+"÷");
-    }
+
 }
 
 void MainWindow::on_pB1divx_clicked()
