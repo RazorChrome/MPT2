@@ -54,7 +54,6 @@ public:
     QPushButton *MinuspushButton;
     QPushButton *MCpushButton;
     QPushButton *pB7;
-    QLineEdit *Input;
     QPushButton *CpushButton;
     QPushButton *ResultpushButton;
     QPushButton *PlusMinuspushButton;
@@ -73,6 +72,7 @@ public:
     QPushButton *pBD;
     QPushButton *pBE;
     QPushButton *pBF;
+    QLineEdit *Input;
     QWidget *gridLayoutWidget_2;
     QGridLayout *gridLayout_2;
     QSpinBox *BasespinBox;
@@ -88,9 +88,9 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(349, 328);
-        MainWindow->setMinimumSize(QSize(349, 328));
-        MainWindow->setMaximumSize(QSize(349, 328));
+        MainWindow->resize(500, 314);
+        MainWindow->setMinimumSize(QSize(500, 314));
+        MainWindow->setMaximumSize(QSize(500, 314));
         QIcon icon;
         icon.addFile(QStringLiteral("../../../calculator-icon-png_131279.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -102,7 +102,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 10, 331, 201));
+        gridLayoutWidget->setGeometry(QRect(10, 10, 482, 202));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -269,11 +269,6 @@ public:
         pB7->setPalette(palette14);
 
         gridLayout->addWidget(pB7, 2, 1, 1, 1);
-
-        Input = new QLineEdit(gridLayoutWidget);
-        Input->setObjectName(QStringLiteral("Input"));
-
-        gridLayout->addWidget(Input, 0, 0, 1, 7);
 
         CpushButton = new QPushButton(gridLayoutWidget);
         CpushButton->setObjectName(QStringLiteral("CpushButton"));
@@ -449,9 +444,14 @@ public:
 
         gridLayout->addWidget(pBF, 6, 5, 1, 1);
 
+        Input = new QLineEdit(gridLayoutWidget);
+        Input->setObjectName(QStringLiteral("Input"));
+
+        gridLayout->addWidget(Input, 0, 0, 1, 6);
+
         gridLayoutWidget_2 = new QWidget(centralWidget);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(10, 220, 331, 51));
+        gridLayoutWidget_2->setGeometry(QRect(10, 210, 481, 51));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -482,7 +482,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 349, 21));
+        menuBar->setGeometry(QRect(0, 0, 500, 21));
         menu = new QMenu(menuBar);
         menu->setObjectName(QStringLiteral("menu"));
         menu_2 = new QMenu(menuBar);
