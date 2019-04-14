@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pbNum[13] = ui->pBD;
     pbNum[14] = ui->pBE;
     pbNum[15] = ui->pBF;
+    window()->setStyleSheet("QLineEdit {border: none}");
 
 }
 
@@ -73,7 +74,13 @@ void MainWindow::checkLineEditFrom()
 
 void MainWindow::on_Input_textEdited(const QString &arg1)
 {
+
     checkLineEditFrom();
+}
+
+void MainWindow::on_Result_textEdited(const QString &arg1)
+{
+
 }
 
 void MainWindow::on_pB0_clicked()
@@ -260,3 +267,5 @@ void MainWindow::on_MemStatus_textChanged(const QString &arg1)
 {
 
 }
+
+

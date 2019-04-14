@@ -36,6 +36,7 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral("../../../calculator-icon-png_131279.png"), QSize(), QIcon::Normal, QIcon::Off);
         History->setWindowIcon(icon);
+        History->setModal(false);
         tableWidget = new QTableWidget(History);
         if (tableWidget->columnCount() < 4)
             tableWidget->setColumnCount(4);
@@ -48,7 +49,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(20, 10, 401, 241));
+        tableWidget->setGeometry(QRect(20, 10, 411, 241));
         tableWidget->setColumnCount(4);
         pushButton = new QPushButton(History);
         pushButton->setObjectName(QStringLiteral("pushButton"));

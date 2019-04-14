@@ -131,6 +131,8 @@ private slots:
 
     void on_MemStatus_textChanged(const QString &arg1);
 
+    void on_Result_textEdited(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
      QPushButton* pbNum[16];
