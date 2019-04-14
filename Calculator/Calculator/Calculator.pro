@@ -27,11 +27,15 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    history.cpp
+    history.cpp \
+    pnumber.cpp
 
 HEADERS += \
         mainwindow.h \
-    history.h
+    history.h \
+    proc.h \
+    pnumber.h \
+    memory.h
 
 FORMS += \
         mainwindow.ui \

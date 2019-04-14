@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pbNum[13] = ui->pBD;
     pbNum[14] = ui->pBE;
     pbNum[15] = ui->pBF;
+    rx.setPattern(str1);
     window()->setStyleSheet("QLineEdit {border: none}");
 
 }
@@ -48,7 +49,7 @@ int MainWindow::charToInt(char c)
 
 void MainWindow::checkLineEditFrom()
 {
-    QString txt = ui->Input->text().toUpper();
+    QString txt = ui->Result->text().toUpper();
     int i = 0, to = ui->BasespinBox->value();
     bool dot = false;
     while (i < txt.size()){
@@ -69,186 +70,322 @@ void MainWindow::checkLineEditFrom()
             txt.remove(i, 1);
         }
     }
-    ui->Input->setText(txt);
-}
-
-void MainWindow::on_Input_textEdited(const QString &arg1)
-{
-
-    checkLineEditFrom();
+    ui->Result->setText(txt);
 }
 
 void MainWindow::on_Result_textEdited(const QString &arg1)
 {
 
+    checkLineEditFrom();
 }
 
 void MainWindow::on_pB0_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c0);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c0);
+
 }
 
 void MainWindow::on_pB1_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c1);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c1);
 }
 
 void MainWindow::on_pB2_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c2);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c2);
 }
 
 void MainWindow::on_pB3_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c3);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c3);
 }
 
 void MainWindow::on_pB4_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c4);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c4);
 }
 
 void MainWindow::on_pB5_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c5);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c5);
 }
 
 void MainWindow::on_pB6_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c6);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c6);
 }
 
 void MainWindow::on_pB7_clicked()
 {
-  ui->Input->setText(ui->Input->text()+c7);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c7);
 }
 
 void MainWindow::on_pB8_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c8);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c8);
 }
 
 void MainWindow::on_pB9_clicked()
 {
-    ui->Input->setText(ui->Input->text()+c9);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+c9);
 }
 
 void MainWindow::on_pBA_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cA);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cA);
 }
 
 void MainWindow::on_pBB_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cB);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cB);
 }
 
 void MainWindow::on_pBC_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cC);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cC);
 }
 
 void MainWindow::on_pBD_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cD);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cD);
 }
 
 void MainWindow::on_pBE_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cE);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cE);
 }
 
 void MainWindow::on_pBF_clicked()
 {
-    ui->Input->setText(ui->Input->text()+cF);
+    if(ui->Result->text() == "0") ui->Result->setText("");
+    ui->Result->setText(ui->Result->text()+cF);
 }
 
 
 void MainWindow::on_DotpushButton_clicked()
 {
-    if(!ui->Input->text().contains(".")){
-        ui->Input->setText(ui->Input->text()+".");
+    if(!ui->Result->text().contains(".")){
+        ui->Result->setText(ui->Result->text()+".");
     }
 }
 
 void MainWindow::on_PlusMinuspushButton_clicked()
 {
-    bool min =false;
-    if(!min){
-        if(!ui->Input->text().contains("-")){
-            ui->Input->setText(ui->Input->text()+"-");
+        if(!ui->Result->text().contains("-")){
+            ui->Result->setText(ui->Result->text().prepend("-"));
         }
-}
+        else
+        {
+            ui->Result->setText(ui->Result->text().remove(0,1));
+        }
 }
 
 void MainWindow::on_PluspushButton_clicked()
 {
-    if(!ui->Input->text().contains("+")){
-        ui->Input->setText(ui->Input->text()+"+");
+    if(!ui->Result->text().isEmpty())
+    {
+        if(pushed)
+        {
+            ui->Input->setText(ui->Result->text()+"+");
+            pushed = false;
+        }
+        else
+        {
+            ui->Input->setText(ui->Input->text()+ui->Result->text()+"+");
+        }
+        Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+        proc.setRight(p);
+        proc.setOptn(Add);
+        proc.OptnRun();
+        ui->Result->setText("");
     }
 }
 
 
 void MainWindow::on_MinuspushButton_clicked()
 {
-    if(!ui->Input->text().contains("-")){
-        ui->Input->setText(ui->Input->text()+"-");
+    if(!ui->Result->text().isEmpty())
+    {
+        if(pushed)
+        {
+            ui->Input->setText(ui->Result->text()+"-");
+            pushed = false;
+        }
+        else
+        {
+            ui->Input->setText(ui->Input->text()+ui->Result->text()+"-");
+        }
+        Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+        if(proc.getLeft() == zero)
+        {
+            proc.setLeft(p);
+        }
+        else
+        {
+            proc.setRight(p);
+        }
+        proc.setOptn(Sub);
+        proc.OptnRun();
+        ui->Result->setText("");
     }
 }
 
 void MainWindow::on_MulpushButton_clicked()
 {
-    if(!ui->Input->text().contains("*")){
-        ui->Input->setText(ui->Input->text()+"*");
+    if(!ui->Result->text().isEmpty())
+    {
+        if(pushed)
+        {
+            ui->Input->setText(ui->Result->text()+"*");
+            pushed = false;
+        }
+        else
+        {
+            ui->Input->setText(ui->Input->text()+ui->Result->text()+"*");
+        }
+        Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+        if(proc.getLeft() == zero)
+        {
+            proc.setLeft(p);
+            proc.setOptn(Mul);
+        }
+        else
+        {
+            proc.setRight(p);
+            proc.setOptn(Mul);
+            proc.OptnRun();
+        }
+        ui->Result->setText("");
     }
 }
 
 void MainWindow::on_DividepushButton_clicked()
 {
-    if(!ui->Input->text().contains("÷")){
-        ui->Input->setText(ui->Input->text()+"÷");
+    if(!ui->Result->text().isEmpty())
+    {
+        if(pushed)
+        {
+            ui->Input->setText(ui->Result->text()+"/");
+            pushed = false;
+        }
+        else
+        {
+            ui->Input->setText(ui->Input->text()+ui->Result->text()+"/");
+        }
+        Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+        if(proc.getLeft() == zero)
+        {
+            proc.setLeft(p);
+            proc.setOptn(Dvd);
+        }
+        else
+        {
+            proc.setRight(p);
+            proc.setOptn(Dvd);
+            proc.OptnRun();
+        }
+
+        ui->Result->setText("");
     }
 }
 
 void MainWindow::on_BSpushButton_clicked()
 {
-    QString txt = ui->Input->text();
-    txt.chop(1); // Удаляет n символов в конце строки.
-    ui->Input->setText(txt);
+    QString txt = ui->Result->text();
+    txt.chop(1);
+    ui->Result->setText(txt);
 }
 
 void MainWindow::on_CEpushButton_clicked()
 {
-    ui->Input->clear();
-    // с очисткой памяти???
+    ui->Result->clear();
 }
 
 void MainWindow::on_CpushButton_clicked()
 {
+    pushed = false;
+    proc.reset();
     ui->Input->clear();
+    ui->Result->clear();
 }
 
 void MainWindow::on_SqrtpushButton_clicked()
 {
-
+    Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+    p = p.square();
+    ui->Result->setText(QString::fromStdString(p.getAstring()));
 }
 
 void MainWindow::on_pB1divx_clicked()
 {
-
+    if(!ui->Result->text().isEmpty() && ui->Result->text() != "0")
+    {
+        Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+        p = p.reverse();
+        ui->Result->setText(QString::fromStdString(p.getAstring()));
+    }
 }
 
 void MainWindow::on_ResultpushButton_clicked()
 {
+    QString rec;
+    if(!pushed)
+    {
+        pushed = true;
+        ui->Input->setText(ui->Input->text()+ui->Result->text());
+        if(!ui->Result->text().isEmpty())
+        {
+            Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+            proc.setRight(p);
+        }
+        rec = ui->Input->text() + "(p = " + QString::number(ui->BasespinBox->value()) + "),";
+    }
+    if(rec.isEmpty())
+    {
+        rec = ui->Result->text();
+        switch(proc.getOptn())
+        {
+            case Add: rec += "+"+QString::fromStdString(proc.getRight().getAstring()); break;
+            case Sub: rec += "-"+QString::fromStdString(proc.getRight().getAstring()); break;
+            case Mul: rec += "*"+QString::fromStdString(proc.getRight().getAstring()); break;
+            case Dvd: rec += "/"+QString::fromStdString(proc.getRight().getAstring()); break;
+        }
+        rec += "(p = " + QString::number(ui->BasespinBox->value()) + "),";
+    }
 
+    proc.OptnRun();
+    ui->Result->setText(QString::fromStdString(proc.getLeft().getAstring()));
+    rec += ui->Result->text();
+    hist.addRecord(rec);
 }
 
 void MainWindow::on_BasespinBox_valueChanged(int arg1)
 {
+    pushed = false;
     for(int i = 0; i < numButtons; ++i){
         pbNum[i]->setEnabled(i < arg1 ? true : false);
     }
-    checkLineEditFrom();
+    proc.reset();
+    ui->Result->setText("");
+    ui->Input->setText("");
+    Pnumber p = mem.get();
+    p.setB(arg1);
+    mem.write(p);
 }
 
 
@@ -263,9 +400,36 @@ void MainWindow::on_AboutAction_triggered()
     QMessageBox::about(this,"О программе","Калькулятор P-ых чисел.\n Авторы программы: Гаев Олег, Гвоздев Дмитрий. \n ");
 }
 
-void MainWindow::on_MemStatus_textChanged(const QString &arg1)
+void MainWindow::on_MCpushButton_clicked()
 {
-
+    if(mem.getState())
+    {
+        ui->MemStatus->setText("");
+    }
+    mem.clear();
 }
 
+void MainWindow::on_MRpushButton_clicked()
+{
+    ui->Result->setText(QString::fromStdString(mem.get().getAstring()));
+}
 
+void MainWindow::on_MSpushButton_clicked()
+{
+    if(!mem.getState())
+    {
+        ui->MemStatus->setText("M");
+    }
+    Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+    mem.write(p);
+}
+
+void MainWindow::on_MpluspushButton_clicked()
+{
+    if(!mem.getState())
+    {
+        ui->MemStatus->setText("M");
+    }
+    Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
+    mem.add(p);
+}

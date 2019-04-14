@@ -42,26 +42,16 @@
     </rect>
    </property>
    <property name="columnCount">
-    <number>4</number>
+    <number>2</number>
    </property>
    <column>
     <property name="text">
-     <string>NumberFrom</string>
+     <string>Expression</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>BaseFrom</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>NumberTo</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>BaseTo</string>
+     <string>Result</string>
     </property>
    </column>
   </widget>

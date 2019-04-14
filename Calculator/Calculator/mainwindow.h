@@ -6,47 +6,12 @@
 #include "history.h"
 #include <QString>
 #include <QMessageBox>
-
-enum{
-    c0 = '0',
-    c1,
-    c2,
-    c3,
-    c4,
-    c5,
-    c6,
-    c7,
-    c8,
-    c9,
-    cA = 'A',
-    cB,
-    cC,
-    cD,
-    cE,
-    cF,
-    cDot = '.',
-    cMinus = '-'
-};
-
-enum{
-    A = 10,
-    B,
-    C,
-    D,
-    E,
-    F,
-    Dot
-};
-
-enum{
-    b10 = 10,
-    b11,
-    b12,
-    b13,
-    b14,
-    b15,
-    b16
-};
+#include <QRegExp>
+#include <QDebug>
+#include "proc.h"
+#include "pnumber.h"
+#include "memory.h"
+#include <QString>
 
 namespace Ui {
 class MainWindow;
@@ -123,24 +88,35 @@ private slots:
 
     void on_BasespinBox_valueChanged(int arg1);
 
-    void on_Input_textEdited(const QString &arg1);
-
     void on_lastactions_triggered();
 
     void on_AboutAction_triggered();
 
-    void on_MemStatus_textChanged(const QString &arg1);
-
     void on_Result_textEdited(const QString &arg1);
+
+    void on_MCpushButton_clicked();
+
+    void on_MRpushButton_clicked();
+
+    void on_MSpushButton_clicked();
+
+    void on_MpluspushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
      QPushButton* pbNum[16];
      History hist;
+     QString str1 = "([A-F0-9]+[+,-,/,*]?)+";
+     QRegExp rx;
+     Proc<Pnumber> proc;
+     Memory<Pnumber> mem;
+     Pnumber zero;
      const int numButtons = 16;
      const int cSmallA = 'a';
      const int cSmallF = 'f';
      const char token = ',';
+     bool pushed = false;
+
 };
 
 #endif // MAINWINDOW_H
