@@ -191,6 +191,7 @@ Pnumber Pnumber::square() {
     return Pnumber(a * a, b);
 };
 
+
 Pnumber Pnumber::operator = (const Pnumber &p2) {
     a = p2.a;
     b = p2.b;

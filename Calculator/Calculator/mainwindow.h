@@ -80,8 +80,6 @@ private slots:
 
     void on_CpushButton_clicked();
 
-    void on_SqrtpushButton_clicked();
-
     void on_pB1divx_clicked();
 
     void on_ResultpushButton_clicked();
@@ -101,6 +99,8 @@ private slots:
     void on_MSpushButton_clicked();
 
     void on_MpluspushButton_clicked();
+
+    void on_SquarepushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -38,19 +38,17 @@ public:
         History->setWindowIcon(icon);
         History->setModal(false);
         tableWidget = new QTableWidget(History);
-        if (tableWidget->columnCount() < 4)
-            tableWidget->setColumnCount(4);
+        if (tableWidget->columnCount() < 2)
+            tableWidget->setColumnCount(2);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
         tableWidget->setGeometry(QRect(20, 10, 411, 241));
-        tableWidget->setColumnCount(4);
+        tableWidget->setEditTriggers(QAbstractItemView::AnyKeyPressed);
+        tableWidget->setColumnCount(2);
+        tableWidget->horizontalHeader()->setDefaultSectionSize(204);
         pushButton = new QPushButton(History);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(340, 260, 75, 23));
@@ -64,13 +62,9 @@ public:
     {
         History->setWindowTitle(QApplication::translate("History", "\320\237\320\276\321\201\320\273\320\265\320\264\320\275\320\270\320\265 \320\264\320\265\320\271\321\201\321\202\320\262\320\270\321\217", 0));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("History", "NumberFrom", 0));
+        ___qtablewidgetitem->setText(QApplication::translate("History", "Expression", 0));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("History", "BaseFrom", 0));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("History", "NumberTo", 0));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("History", "BaseTo", 0));
+        ___qtablewidgetitem1->setText(QApplication::translate("History", "Result", 0));
         pushButton->setText(QApplication::translate("History", "Clear", 0));
     } // retranslateUi
 

@@ -324,7 +324,8 @@ void MainWindow::on_CpushButton_clicked()
     ui->Result->clear();
 }
 
-void MainWindow::on_SqrtpushButton_clicked()
+
+void MainWindow::on_SquarepushButton_clicked()
 {
     Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
     p = p.square();
@@ -433,3 +434,5 @@ void MainWindow::on_MpluspushButton_clicked()
     Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
     mem.add(p);
 }
+
+

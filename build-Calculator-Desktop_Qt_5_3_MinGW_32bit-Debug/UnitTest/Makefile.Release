@@ -345,6 +345,10 @@ release/tst_test_calc.moc: D:/Programs/Qt/5.3/mingw482_32/include/QtTest/QtTest 
 		D:/Programs/Qt/5.3/mingw482_32/include/QtCore/QDebug \
 		D:/Programs/Qt/5.3/mingw482_32/include/QtTest/qtesttouch.h \
 		D:/Programs/Qt/5.3/mingw482_32/include/QtTest/qttestversion.h \
+		../../Calculator/Calculator/proc.h \
+		../../Calculator/Calculator/pnumber.cpp \
+		../../Calculator/Calculator/pnumber.h \
+		../../Calculator/Calculator/memory.h \
 		../../Calculator/UnitTest/tst_test_calc.cpp
 	D:\Programs\Qt\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Programs/Qt/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Dimailim/Pictures/Study/MPT2/Calculator/UnitTest -ID:/Programs/Qt/5.3/mingw482_32/include -ID:/Programs/Qt/5.3/mingw482_32/include/QtTest -ID:/Programs/Qt/5.3/mingw482_32/include/QtCore -I. ..\..\Calculator\UnitTest\tst_test_calc.cpp -o release\tst_test_calc.moc
 
@@ -602,6 +606,10 @@ release/tst_test_calc.o: ../../Calculator/UnitTest/tst_test_calc.cpp D:/Programs
 		D:/Programs/Qt/5.3/mingw482_32/include/QtCore/QDebug \
 		D:/Programs/Qt/5.3/mingw482_32/include/QtTest/qtesttouch.h \
 		D:/Programs/Qt/5.3/mingw482_32/include/QtTest/qttestversion.h \
+		../../Calculator/Calculator/proc.h \
+		../../Calculator/Calculator/pnumber.cpp \
+		../../Calculator/Calculator/pnumber.h \
+		../../Calculator/Calculator/memory.h \
 		release/tst_test_calc.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tst_test_calc.o ..\..\Calculator\UnitTest\tst_test_calc.cpp
 

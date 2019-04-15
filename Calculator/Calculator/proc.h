@@ -8,8 +8,7 @@ enum {
     Sub,
     Mul,
     Dvd,
-    Rev,
-    Sqr
+
 };
 
 template<class C>
@@ -57,22 +56,6 @@ public:
         }
         case Dvd: {
             Lop_Res = Lop_Res / Rop;
-            break;
-        }
-        default:
-            break;
-        }
-    }
-    void FuncRun()
-    {
-        switch (Operation)
-        {
-        case Rev: {
-            Rop = Rop.reverse();
-            break;
-        }
-        case Sqr: {
-            Rop = sqrt(Rop);
             break;
         }
         default:

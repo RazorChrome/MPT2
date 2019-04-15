@@ -41,9 +41,15 @@
      <height>241</height>
     </rect>
    </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::AnyKeyPressed</set>
+   </property>
    <property name="columnCount">
     <number>2</number>
    </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>204</number>
+   </attribute>
    <column>
     <property name="text">
      <string>Expression</string>

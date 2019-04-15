@@ -56,7 +56,7 @@ public:
     QPushButton *CpushButton;
     QPushButton *pB7;
     QLineEdit *MemStatus;
-    QPushButton *SqrtpushButton;
+    QPushButton *SquarepushButton;
     QPushButton *pB3;
     QPushButton *DividepushButton;
     QLineEdit *Result;
@@ -286,18 +286,19 @@ public:
         MemStatus = new QLineEdit(gridLayoutWidget);
         MemStatus->setObjectName(QStringLiteral("MemStatus"));
         MemStatus->setEnabled(false);
+        MemStatus->setReadOnly(true);
 
         gridLayout->addWidget(MemStatus, 2, 0, 1, 1);
 
-        SqrtpushButton = new QPushButton(gridLayoutWidget);
-        SqrtpushButton->setObjectName(QStringLiteral("SqrtpushButton"));
+        SquarepushButton = new QPushButton(gridLayoutWidget);
+        SquarepushButton->setObjectName(QStringLiteral("SquarepushButton"));
         QPalette palette16;
         palette16.setBrush(QPalette::Active, QPalette::ButtonText, brush);
         palette16.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
         palette16.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
-        SqrtpushButton->setPalette(palette16);
+        SquarepushButton->setPalette(palette16);
 
-        gridLayout->addWidget(SqrtpushButton, 3, 5, 1, 1);
+        gridLayout->addWidget(SquarepushButton, 3, 5, 1, 1);
 
         pB3 = new QPushButton(gridLayoutWidget);
         pB3->setObjectName(QStringLiteral("pB3"));
@@ -322,7 +323,7 @@ public:
         Result = new QLineEdit(gridLayoutWidget);
         Result->setObjectName(QStringLiteral("Result"));
         Result->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        Result->setReadOnly(true);
+        Result->setReadOnly(false);
 
         gridLayout->addWidget(Result, 0, 0, 1, 6);
 
@@ -493,6 +494,7 @@ public:
         Input->setGeometry(QRect(10, 10, 481, 20));
         Input->setMaximumSize(QSize(486, 21));
         Input->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        Input->setReadOnly(true);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -523,7 +525,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200 P \321\207\320\270\321\201\320\265\320\273", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200 P-\321\213\321\205 \321\207\320\270\321\201\320\265\320\273", 0));
         lastactions->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\273\320\265\320\264\320\275\320\270\320\265 \320\276\320\277\320\265\321\200\320\260\321\206\320\270\320\270", 0));
 #ifndef QT_NO_TOOLTIP
         lastactions->setToolTip(QApplication::translate("MainWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\276\320\277\320\265\321\200\320\260\321\206\320\270\320\271", 0));
@@ -554,10 +556,10 @@ public:
 #ifndef QT_NO_TOOLTIP
         MemStatus->setToolTip(QApplication::translate("MainWindow", "\320\225\321\201\320\273\320\270 \320\277\320\260\320\274\321\217\321\202\321\214 \320\262\320\272\320\273\321\216\321\207\320\265\320\275\320\260 \320\262\321\213\320\262\320\276\320\264\320\270\321\202\321\201\321\217 \"M\"", 0));
 #endif // QT_NO_TOOLTIP
-        SqrtpushButton->setText(QApplication::translate("MainWindow", "\342\210\232", 0));
+        SquarepushButton->setText(QApplication::translate("MainWindow", "x\302\262", 0));
         pB3->setText(QApplication::translate("MainWindow", "3", 0));
         DividepushButton->setText(QApplication::translate("MainWindow", "/", 0));
-        Result->setPlaceholderText(QApplication::translate("MainWindow", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", 0));
+        Result->setPlaceholderText(QApplication::translate("MainWindow", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202 \320\270 \320\262\320\262\320\276\320\264", 0));
         pB2->setText(QApplication::translate("MainWindow", "2", 0));
         pBA->setText(QApplication::translate("MainWindow", "A", 0));
 #ifndef QT_NO_TOOLTIP
@@ -587,6 +589,8 @@ public:
         BasehorizontalSlider->setToolTip(QApplication::translate("MainWindow", "\320\222\321\213\320\261\320\265\321\200\320\270\321\202\320\265 \320\276\321\201\320\275\320\276\320\262\320\260\320\275\320\270\320\265 \321\207\320\270\321\201\320\273\320\260", 0));
 #endif // QT_NO_TOOLTIP
         label->setText(QApplication::translate("MainWindow", "\320\236\321\201\320\275\320\276\320\262\320\260\320\275\320\270\320\265", 0));
+        Input->setText(QString());
+        Input->setPlaceholderText(QApplication::translate("MainWindow", "\320\222\321\213\321\200\320\260\320\266\320\265\320\275\320\270\320\265", 0));
         menu->setTitle(QApplication::translate("MainWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217", 0));
         menu_2->setTitle(QApplication::translate("MainWindow", "\320\241\320\277\321\200\320\260\320\262\320\272\320\260", 0));
     } // retranslateUi
