@@ -354,6 +354,10 @@ void MainWindow::on_ResultpushButton_clicked()
             Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
             proc.setRight(p);
         }
+        else
+        {
+            proc.setRight(proc.getLeft());
+        }
         rec = ui->Input->text() + "(p = " + QString::number(ui->BasespinBox->value()) + "),";
     }
     if(rec.isEmpty())
