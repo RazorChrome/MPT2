@@ -30,6 +30,8 @@ private slots:
     void test_OperMul();
     void test_OperDiv();
     void test_Test();
+    void test_Test1();
+    void test_Test2();
 
 };
 
@@ -173,6 +175,22 @@ void Test_Calc::test_Test(){
     Pnumber y = e + r;
     QCOMPARE(10.0, y.getA());
 
+}
+void Test_Calc::test_Test1(){
+    string cs = "-2";
+    string  ds = "-3";
+    string sb = "10";
+    string res = "1";
+    Pnumber c(cs,sb);
+    Pnumber d(ds,sb);
+    Pnumber val = c - d;
+    QCOMPARE(1.0,val.getA());
+}
+void Test_Calc::test_Test2(){
+    string cs = "-2";
+    string sb = "10";
+    Pnumber p(cs,sb);
+    QCOMPARE(-2.0,p.getA());
 }
 
 

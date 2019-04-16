@@ -206,12 +206,19 @@ void MainWindow::on_PluspushButton_clicked()
         }
         else
         {
+            proc.OptnRun();
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"+");
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
-        proc.setRight(p);
+        if(proc.getLeft() == zero)
+        {
+            proc.setLeft(p);
+        }
+        else
+        {
+            proc.setRight(p);
+        }
         proc.setOptn(Add);
-        proc.OptnRun();
         ui->Result->setText("");
     }
 }
@@ -229,6 +236,7 @@ void MainWindow::on_MinuspushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"-");
+            proc.OptnRun();
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
@@ -240,7 +248,7 @@ void MainWindow::on_MinuspushButton_clicked()
             proc.setRight(p);
         }
         proc.setOptn(Sub);
-        proc.OptnRun();
+
         ui->Result->setText("");
     }
 }
@@ -257,19 +265,18 @@ void MainWindow::on_MulpushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"*");
+            proc.OptnRun();
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
         {
             proc.setLeft(p);
-            proc.setOptn(Mul);
         }
         else
         {
             proc.setRight(p);
-            proc.setOptn(Mul);
-            proc.OptnRun();
         }
+        proc.setOptn(Mul);
         ui->Result->setText("");
     }
 }
@@ -286,20 +293,18 @@ void MainWindow::on_DividepushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"/");
+            proc.OptnRun();
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
         {
             proc.setLeft(p);
-            proc.setOptn(Dvd);
         }
         else
         {
             proc.setRight(p);
-            proc.setOptn(Dvd);
-            proc.OptnRun();
         }
-
+        proc.setOptn(Dvd);
         ui->Result->setText("");
     }
 }
@@ -372,7 +377,7 @@ void MainWindow::on_ResultpushButton_clicked()
         }
         rec += "(p = " + QString::number(ui->BasespinBox->value()) + "),";
     }
-
+    qDebug() << proc.getLeft().getA() << ", " << proc.getRight().getA();
     proc.OptnRun();
     ui->Result->setText(QString::fromStdString(proc.getLeft().getAstring()));
     rec += ui->Result->text();

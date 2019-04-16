@@ -34,6 +34,11 @@ Pnumber::Pnumber(string sa, string sb) {
     for (int i = top; i > -bot; --i)
     {
         char tmp = sa.at(top - i);
+        if(tmp == '-')
+        {
+            sign *= -1;
+            continue;
+        }
         if (b > b10)
         {
             if (tmp > c6 + b)
