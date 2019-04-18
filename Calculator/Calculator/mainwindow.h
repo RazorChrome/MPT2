@@ -116,7 +116,7 @@ private:
      const int cSmallF = 'f';
      const char token = ',';
      bool pushed = false;
-
+     bool oper = false;
 };
 
 #endif // MAINWINDOW_H

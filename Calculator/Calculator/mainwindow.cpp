@@ -197,7 +197,7 @@ void MainWindow::on_PlusMinuspushButton_clicked()
 
 void MainWindow::on_PluspushButton_clicked()
 {
-    if(!ui->Result->text().isEmpty())
+    if(!ui->Result->text().isEmpty() && !oper)
     {
         if(pushed)
         {
@@ -206,7 +206,7 @@ void MainWindow::on_PluspushButton_clicked()
         }
         else
         {
-            proc.OptnRun();
+
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"+");
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
@@ -219,6 +219,7 @@ void MainWindow::on_PluspushButton_clicked()
             proc.setRight(p);
         }
         proc.setOptn(Add);
+        oper = true;
         ui->Result->setText("");
     }
 }
@@ -226,7 +227,7 @@ void MainWindow::on_PluspushButton_clicked()
 
 void MainWindow::on_MinuspushButton_clicked()
 {
-    if(!ui->Result->text().isEmpty())
+    if(!ui->Result->text().isEmpty() && !oper)
     {
         if(pushed)
         {
@@ -236,7 +237,7 @@ void MainWindow::on_MinuspushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"-");
-            proc.OptnRun();
+
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
@@ -248,14 +249,14 @@ void MainWindow::on_MinuspushButton_clicked()
             proc.setRight(p);
         }
         proc.setOptn(Sub);
-
+        oper = true;
         ui->Result->setText("");
     }
 }
 
 void MainWindow::on_MulpushButton_clicked()
 {
-    if(!ui->Result->text().isEmpty())
+    if(!ui->Result->text().isEmpty() && !oper)
     {
         if(pushed)
         {
@@ -265,7 +266,7 @@ void MainWindow::on_MulpushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"*");
-            proc.OptnRun();
+
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
@@ -277,13 +278,14 @@ void MainWindow::on_MulpushButton_clicked()
             proc.setRight(p);
         }
         proc.setOptn(Mul);
+        oper = true;
         ui->Result->setText("");
     }
 }
 
 void MainWindow::on_DividepushButton_clicked()
 {
-    if(!ui->Result->text().isEmpty())
+    if(!ui->Result->text().isEmpty() && !oper)
     {
         if(pushed)
         {
@@ -293,7 +295,7 @@ void MainWindow::on_DividepushButton_clicked()
         else
         {
             ui->Input->setText(ui->Input->text()+ui->Result->text()+"/");
-            proc.OptnRun();
+
         }
         Pnumber p(ui->Result->text().toStdString(),to_string(ui->BasespinBox->value()));
         if(proc.getLeft() == zero)
@@ -305,6 +307,7 @@ void MainWindow::on_DividepushButton_clicked()
             proc.setRight(p);
         }
         proc.setOptn(Dvd);
+        oper = true;
         ui->Result->setText("");
     }
 }
@@ -324,6 +327,7 @@ void MainWindow::on_CEpushButton_clicked()
 void MainWindow::on_CpushButton_clicked()
 {
     pushed = false;
+    oper = false;
     proc.reset();
     ui->Input->clear();
     ui->Result->clear();
@@ -350,6 +354,8 @@ void MainWindow::on_pB1divx_clicked()
 void MainWindow::on_ResultpushButton_clicked()
 {
     QString rec;
+    QString right = "";
+    oper = false;
     if(!pushed)
     {
         pushed = true;
@@ -363,21 +369,16 @@ void MainWindow::on_ResultpushButton_clicked()
         {
             proc.setRight(proc.getLeft());
         }
-        rec = ui->Input->text() + "(p = " + QString::number(ui->BasespinBox->value()) + "),";
     }
-    if(rec.isEmpty())
+    rec = QString::fromStdString(proc.getLeft().getAstring());
+    switch(proc.getOptn())
     {
-        rec = ui->Result->text();
-        switch(proc.getOptn())
-        {
-            case Add: rec += "+"+QString::fromStdString(proc.getRight().getAstring()); break;
-            case Sub: rec += "-"+QString::fromStdString(proc.getRight().getAstring()); break;
-            case Mul: rec += "*"+QString::fromStdString(proc.getRight().getAstring()); break;
-            case Dvd: rec += "/"+QString::fromStdString(proc.getRight().getAstring()); break;
-        }
-        rec += "(p = " + QString::number(ui->BasespinBox->value()) + "),";
+        case Add: rec += "+"+QString::fromStdString(proc.getRight().getAstring()); break;
+        case Sub: rec += "-"+QString::fromStdString(proc.getRight().getAstring()); break;
+        case Mul: rec += "*"+QString::fromStdString(proc.getRight().getAstring()); break;
+        case Dvd: rec += "/"+QString::fromStdString(proc.getRight().getAstring()); break;
     }
-    qDebug() << proc.getLeft().getA() << ", " << proc.getRight().getA();
+    rec += "(p = " + QString::number(ui->BasespinBox->value()) + "),";
     proc.OptnRun();
     ui->Result->setText(QString::fromStdString(proc.getLeft().getAstring()));
     rec += ui->Result->text();
